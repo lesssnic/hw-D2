@@ -4,7 +4,7 @@
 
 function cardsValidator(cardNumber = bankCreditCardNumber.value){
 
-let bankId = cardNumber.slice(0, 2);
+let bankId = cardNumber.replace(/\s/g, '').slice(0, 2);
 
     sumCardNumber = cardNumber.replace(/\s/g, '').split('').filter((item) => Number.isInteger(+item)).reverse()
                 .map(function(item, i){
