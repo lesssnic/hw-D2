@@ -4,9 +4,11 @@
 
 function cardsValidator(cardNumber = bankCreditCardNumber.value){
 
-let bankId = cardNumber.replace(/\s/g, '').slice(0, 2);
+    cardNumber = cardNumber.replace(/\s/g, '').split('').filter((item) => Number.isInteger(+item));
 
-    sumCardNumber = cardNumber.replace(/\s/g, '').split('').filter((item) => Number.isInteger(+item)).reverse()
+let bankId = cardNumber.join('').slice(0, 2);
+
+    sumCardNumber = cardNumber.reverse()
                 .map(function(item, i){
                     if(i%2==1){
                     item = item*2;
@@ -19,11 +21,11 @@ let bankId = cardNumber.replace(/\s/g, '').slice(0, 2);
 
     if (sumCardNumber%10==0){
         validData = 'Карта валидна  ' + bankIdDetect(bankId);
-        resultValidationCard.innerHTML = `<tr><th>${cardNumber}</th><th>Карта валидна</th><th>${bankIdDetect(bankId)}</th></tr>`;
+        resultValidationCard.innerHTML = `<tr><th>${cardNumber.reverse().join('')}</th><th>Карта валидна</th><th>${bankIdDetect(bankId)}</th></tr>`;
     }else{ 
         
         validData = 'В номере карты ошибка';
-        resultValidationCard.innerHTML = `<tr><th>${cardNumber}</th><th>Карта НЕ валидна</th><th></th></tr>`;
+        resultValidationCard.innerHTML = `<tr><th>${cardNumber.reverse().join('')}</th><th>Карта НЕ валидна</th><th></th></tr>`;
     }
 };
 
