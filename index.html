@@ -14,7 +14,7 @@
         <h1>Валидация и типирование Кредитных карт</h1>
         <div class="form-group d-flex flex-row py-1">
             <label class="w-30" for="inn-code">Введите номер карты</label>
-            <input class="form-control" type="text" name="" id="bankCreditCardNumber" value="4916348288895897" required>
+            <input class="form-control" type="text" name="" id="bankCreditCardNumber" value="4916348288895897" pattern="[0-9, ,-]+" required>
             <button class="m-2" onclick="cardsValidator()">Проверить карту</button>
         </div>
         <div>
